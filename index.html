@@ -1,50 +1,88 @@
-{% extends "base.html" %}
-
-{% block title %}Home - Big Stores{% endblock %}
-
-{% block content %}
-<div class="jumbotron text-center bg-light">
-    <h1 class="display-4">Welcome to Big Stores</h1>
-    <p class="lead">Discover the latest fashion from local designers</p>
-    <form class="form-inline justify-content-center mt-4">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search for products" aria-label="Search">
-        <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
-    </form>
-</div>
-
-<div class="container mt-5">
-    <h2>Recently Added Products</h2>
-    <div class="row">
-        {% for product in products %}
-        <div class="col-md-4">
-            <div class="card mb-4">
-                <img src="{{ url_for('static', filename='products/uploads/' + product.image_file) }}" class="card-img-top" alt="{{ product.name }}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ product.name }}</h5>
-                    <p class="card-text">{{ product.description }}</p>
-                    <p class="card-text"><strong>₵{{ product.price }}</strong></p>
-                    <p class="card-text">Location: {{ product.location }}</p>
-                </div>
-                <div class="card-footer text-center">
-                    <a href="#" class="btn btn-primary">Add to Cart</a>
-                </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Stores</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="navbar-brand">
+                    <img src="logo.png" alt="Big Stores Logo" height="50">
+                    Big Stores
+                </a>
+                <nav class="navbar">
+                    <ul class="nav">
+                        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Signup</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Designers</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
-        {% endfor %}
-    </div>
+    </header>
+    <main class="container">
+        <div class="jumbotron">
+            <h1 class="display-4">Welcome to Big Stores</h1>
+            <p class="lead">Discover the latest fashion from local designers</p>
+            <form class="search-form">
+                <input type="search" placeholder="Search for products" aria-label="Search">
+                <button type="submit">Search</button>
+            </form>
+        </div>
 
-    <h2>Our Designers</h2>
-    <div class="row">
-        {% for designer in designers %}
-        <div class="col-md-4">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h5 class="card-title">{{ designer.name }}</h5>
-                    <p class="card-text">{{ designer.description }}</p>
+        <section class="categories">
+            <h2>Categories</h2>
+            <div class="row">
+                <div class="col">
+                    <div class="category-card">
+                        <img src="shop-icon.png" alt="Shops">
+                        <h3>Shops</h3>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="category-card">
+                        <img src="bag-icon.png" alt="Bags">
+                        <h3>Bags</h3>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="category-card">
+                        <img src="sandals-icon.png" alt="Sandals">
+                        <h3>Sandals</h3>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="category-card">
+                        <img src="dress-icon.png" alt="Dresses">
+                        <h3>Dresses</h3>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="category-card">
+                        <img src="belt-icon.png" alt="Belts">
+                        <h3>Belts</h3>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="category-card">
+                        <img src="more-icon.png" alt="More">
+                        <h3>More</h3>
+                    </div>
                 </div>
             </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container text-center">
+            <p>© 2024 Big Stores. All rights reserved.</p>
         </div>
-        {% endfor %}
-    </div>
-</div>
-{% endblock %}
+    </footer>
+</body>
+</html>
+
